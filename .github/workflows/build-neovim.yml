@@ -24,6 +24,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
+          images: |
+            awray3/neovim
           # generate Docker tags based on the following events/attributes
           tags: |
             type=ref,event=branch
