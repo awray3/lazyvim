@@ -7,13 +7,11 @@ RUN git config --global init.defaultBranch main
 
 # Install zsh
 RUN rm ~/.zshrc
-RUN vcsh clone https://github.com/awray3/dotfiles-zsh zsh && vcsh zsh fetch origin try-zellij && vcsh zsh checkout try-zellij
+RUN vcsh clone https://github.com/awray3/dotfiles-zsh zsh
 
 RUN vcsh clone https://github.com/awray3/dotfiles-vscodevim vscodevim
 
 RUN vcsh clone https://github.com/awray3/dotfiles-starship starship
 
-# Install nerd font
-RUN wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.0/CascadiaCode.zip && unzip CascadiaCode.zip -d ~/.fonts && fc-cache -fv
-
-ENTRYPOINT $(brew --prefix)/bin/zsh
+ENV SHELL=/home/linuxbrew/.linuxbrew/bin/zsh
+# ENTRYPOINT $(brew --prefix)/bin/zsh
