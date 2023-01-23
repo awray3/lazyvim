@@ -1,6 +1,7 @@
 FROM gitpod/workspace-full:latest
 
-RUN brew install neovim just rg fzf tldr sk vcsh starship zsh lsd bat
+RUN brew install neovim just rg fzf tldr
+RUN brew install sk vcsh starship zsh lsd bat
 
 RUN git config --global init.defaultBranch main
 
