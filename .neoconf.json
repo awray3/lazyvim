@@ -8,7 +8,12 @@
   "neoconf": {
     "plugins": {
       "sumneko_lua": {
-        "enabled": true
+        "enabled": true,
+        "Lua": {
+          "diagnostics": {
+            "globals": "vim"
+          }
+        }
       }
     }
   }

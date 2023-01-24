@@ -23,3 +23,6 @@ launch dir="." tag="stable":
 exp: 
 	just build latest
 	just launch . latest
+
+run-locally:
+	nvim --cmd "set runtimepath+=${PWD}" -u init.lua
