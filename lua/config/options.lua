@@ -45,7 +45,7 @@ g.loaded_node_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
 
-g.python3_host_prog = utils.paths.nvim.top_level .. '/.venv/bin/python'
+-- g.python3_host_prog = utils.paths.nvim.top_level .. '/.venv/bin/python'
 
 -- number stuff
 opt.number = true

@@ -1,9 +1,10 @@
 Dockerfile
 .dockerignore
-.gitignore
+.git*
 .justfile
 stylua.toml
 .github
+.vscode
 .gitpod*
 README.md
 stylua.toml
