@@ -1,28 +1,13 @@
-build tag:
-	#!/usr/bin/env /bin/bash
-	set -euo pipefail
+build:
+	docker build --tag neovim:dev .
 
-	docker build \
-		--build-arg DOTFILE_REPO_URL \
-		--tag neovim:{{tag}} .
-
-launch dir="." tag="stable":
-	#!/usr/bin/env /bin/bash
-	set -euo pipefail
-
-	launch_path=$(grealpath {{dir}})
-	name=$(basename ${launch_path})
-	
+launch:
 	docker run \
-		-v $(grealpath .):/edit \
+    -n neodev \
+		-v `pwd`:/edit \
+    -v /tmp/nvimsocket:/tmp/nvimsocket \
 		-w /edit \
-		--name neovim-${name}-{{tag}} \
-		-it --rm \
-		neovim:{{tag}}
+    neovim:dev
 
-exp: 
-	just build latest
-	just launch . latest
-
-run-locally:
-	nvim --cmd "set runtimepath+=${PWD}" -u init.lua
+attach:
+  docker run -it neodev bash
