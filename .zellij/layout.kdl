@@ -12,7 +12,9 @@ layout {
     }
 
   tab name="Edit" {
-      pane
+      pane {
+          focus true
+        }
     }
 
   tab name="Recipes" {
@@ -21,18 +23,20 @@ layout {
               name "Neodev Container"
               command "just"
               args "attach"
-              focus true
+              start_suspended true
             }
           pane split_direction="horizontal" size="40%"{
               pane size="90%" {
                   name "Build + Launch"
                   command "just"
                   args "launch"
+                  start_suspended true
                 }
               pane size="10%" {
                   name "Stop"
                   command "just"
                   args "stop"
+                  start_suspended true
                 }
           }
       }

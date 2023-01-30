@@ -1,13 +1,13 @@
 build:
 	docker build --tag neovim:dev .
 
-launch:
-	docker run \
-    -n neodev \
-		-v `pwd`:/edit \
+launch: build
+  docker run -d \
+    --name neodev \
+    -v `pwd`:/edit \
     -v /tmp/nvimsocket:/tmp/nvimsocket \
-		-w /edit \
+    -w /edit \
     neovim:dev
 
 attach:
-  docker run -it neodev bash
+  docker exec -it neodev bash
