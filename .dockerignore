@@ -2,9 +2,6 @@ Dockerfile
 .dockerignore
 .git*
 .justfile
-stylua.toml
-.github
 .vscode
-.gitpod*
+.zellij
 README.md
-stylua.toml
