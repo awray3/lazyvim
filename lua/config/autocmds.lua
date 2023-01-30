@@ -9,19 +9,19 @@
 -- Add any additional autocmds here
 
 
- local utils = require 'utils'
+ -- local utils = require 'utils'
 
- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
-     pattern = '*',
-     callback = function()
-         utils.config_winbar_or_statusline()
-     end,
- })
+ -- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+ --     pattern = '*',
+ --     callback = function()
+ --         utils.config_winbar_or_statusline()
+ --     end,
+ -- })
  
  -- Highlight on yank
- local yank_highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
-     clear = true,
- })
+ -- local yank_highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
+ --     clear = true,
+ -- })
 -- I think this is now handled in lazyvim?
 -- it would be nice to know if this length can be tweaked, like in vscode.
 --  vim.api.nvim_create_autocmd('TextYankPost', {
@@ -35,7 +35,7 @@
 --  })
  
  -- Automatically source and re-compile lazy whenever you save the init.lua
- vim.api.nvim_create_autocmd('BufWritePost', {
-     command = 'source <afile> | Lazy! sync',
-     pattern = vim.fn.expand '$MYVIMRC',
- })
+ -- vim.api.nvim_create_autocmd('BufWritePost', {
+ --     command = 'source <afile> | Lazy! sync',
+ --     pattern = vim.fn.expand '$MYVIMRC',
+ -- })
