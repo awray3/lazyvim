@@ -8,7 +8,6 @@ launch: stop build
     docker run -d \
         --name neodev \
         -v `pwd`:/edit \
-        -v /tmp/nvimsocket:/tmp/nvimsocket \
         -w /edit \
         neovim:dev
 

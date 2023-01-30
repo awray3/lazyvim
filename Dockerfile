@@ -27,7 +27,6 @@ COPY . /root/.config/nvim
 RUN cd /root/.config/nvim
 
 # Install Lazy plugins
-RUN nvim --headless -V2 +qall
+RUN nvim --headless -V +qall
 
-# Container waits for user to log in and launch neovim currently.
-CMD tail -f /dev/null
+CMD nvim
