@@ -11,28 +11,22 @@ layout {
         }
     }
 
-  tab name="Edit" {
-      pane
-    }
-
-  tab name="Recipes" {
+  tab name="Main" {
       pane split_direction="vertical" {
           pane size="60%" {
-              name "Neodev Container"
-              command "just"
-              args "attach"
+              name "Dev"
+              command "dvim"
               focus true
             }
           pane split_direction="horizontal" size="40%"{
-              pane size="90%" {
-                  name "Build + Launch"
+              pane size="80%" {
+                  name "neodev"
                   command "just"
-                  args "launch"
+                  args "attach"
+                  start_suspended true
                 }
-              pane size="10%" {
-                  name "Stop"
-                  command "just"
-                  args "stop"
+              pane size="20%" {
+                  name "term"
                 }
           }
       }
