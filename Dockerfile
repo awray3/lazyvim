@@ -1,37 +1,40 @@
 FROM python:3.11.1-alpine as builder
 
-<<<<<<< HEAD
-RUN apk add git lazygit neovim neovim-doc fzf alpine-sdk --update
-=======
-RUN set -eux; apt-get update && apt-get install -y \
+RUN apk add \
+    alpine-sdk \
     autoconf \
     automake \
+    bash \
+    build-base \
+    lazygit \
     cmake \
+    coreutils \
     curl \
     doxygen \
     g++ \
-    gettext \
     git \
+    gettext-tiny-dev \
     libtool \
-    libtool-bin \
-    ninja-build \
+    fzf \
     npm \
-    pkg-config \
+    ninja \
+    pkgconf \
     ripgrep \
     tar \
     unzip \
-    gzip
+    gzip \
+    --update
+
 
 WORKDIR /build
 
 # install Lazygit
-ARG LG_BIN="https://github.com/jesseduffield/lazygit/releases/download/v0.36.0/lazygit_0.36.0_Linux_arm64.tar.gz"
-RUN curl -Lo lazygit.tar.gz $LG_BIN
-# ARG LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-# RUN curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_arm64.tar.gz"
-RUN tar xf lazygit.tar.gz lazygit && mv lazygit /usr/local/bin && rm lazygit.tar.gz
+# ARG LG_BIN="https://github.com/jesseduffield/lazygit/releases/download/v0.36.0/lazygit_0.36.0_Linux_arm64.tar.gz"
+# RUN curl -Lo lazygit.tar.gz $LG_BIN
+# # ARG LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+# # RUN curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_arm64.tar.gz"
+# RUN tar xf lazygit.tar.gz lazygit && mv lazygit /usr/local/bin && rm lazygit.tar.gz
 # end install lazygit
->>>>>>> f742942 (Build neovim from source)
 
 # Install neovim
 # # dependencies
@@ -45,8 +48,11 @@ ENV RELEASE_URL="https://github.com/neovim/neovim/archive/refs/tags/${NVIM_TAG}.
 RUN curl -Lo neovim.tar.gz $RELEASE_URL
 RUN tar xf neovim.tar.gz && mv neovim-* neovim
 
+### build
 WORKDIR /build/neovim
 RUN make -j${N_CORES} && make install
+
+### cleanup
 WORKDIR /build
 RUN rm -rf neovim
 # End neovim install
@@ -55,8 +61,8 @@ RUN rm -rf neovim
 COPY . /root/.config/nvim
 RUN cd /root/.config/nvim
 
-RUN nvim --headless +Lazy sync +qall
-RUN nvim --headless +TSInstall +qall
-RUN nvim --headless +TSUpdate +qall
+# Container waits for user to log in and launch neovim currently.
+CMD tail -f /dev/null
 
-CMD nvim
+# RUN nvim --headless +Lazy sync +qall
+
