@@ -13,6 +13,7 @@ RUN apk add \
     npm \
     neovim \
     ripgrep \
+    stylua \
     tar \
     unzip \
     gzip \

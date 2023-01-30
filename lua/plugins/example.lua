@@ -12,7 +12,7 @@ return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
 
-  {"max397574/better-escape.nvim"},
+  { "max397574/better-escape.nvim", config=true},
 
   -- Configure LazyVim to load gruvbox
   {
@@ -28,9 +28,6 @@ return {
     -- opts will be merged with the parent spec
     opts = { use_diagnostic_signs = true },
   },
-
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
 
   -- add symbols-outline
   {
