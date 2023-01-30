@@ -1,5 +1,5 @@
 build:
-	docker build --tag neovim:dev .
+	docker build --build-arg N_CORES=8 --tag neovim:dev .
 
 launch: build
   docker run -d \
@@ -11,3 +11,6 @@ launch: build
 
 attach:
   docker exec -it neodev bash
+
+stop:
+  docker rm --force neodev
