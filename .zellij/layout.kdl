@@ -20,13 +20,13 @@ layout {
             }
           pane split_direction="horizontal" size="40%"{
               pane size="80%" {
+                  name "term"
+                }
+              pane size="20%" {
                   name "neodev"
                   command "just"
                   args "attach"
                   start_suspended true
-                }
-              pane size="20%" {
-                  name "term"
                 }
           }
       }
