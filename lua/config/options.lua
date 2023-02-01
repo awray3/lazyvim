@@ -86,7 +86,13 @@ opt.ruler = false
 
 -- blankline support
 opt.list = true
-opt.listchars:append({ space = "⋅" })
+opt.listchars:append({
+  eol="Ω",
+  tab="¬",
+  trail = "↤",
+  extends = ">",
+  precedes = "<",
+ })
 
 -- disable built-in plugins
 local disabled_built_ins = {
@@ -123,6 +129,7 @@ vim.filetype.add({
   pattern = {
     ['.*git/config'] = 'gitconfig',
     ['.*env.*'] = 'sh',
+    ['.qmd'] = 'quarto',
   }
 })
 
