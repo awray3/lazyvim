@@ -28,7 +28,7 @@ opt.fillchars = { eob = " " }
 opt.pumheight = 10
 
 -- complete even if there's only one item; do not autoselect item
-opt.completeopt = 'menu,menuone,noselect'
+opt.completeopt = "menu,menuone,noselect"
 
 -- set minimal number of screeen lines above and below cursor
 opt.scrolloff = 1000
@@ -44,8 +44,6 @@ opt.splitright = true
 g.loaded_node_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
-
--- g.python3_host_prog = utils.paths.nvim.top_level .. '/.venv/bin/python'
 
 -- number stuff
 opt.number = true
@@ -85,14 +83,17 @@ opt.timeoutlen = 400
 opt.ruler = false
 
 -- blankline support
+vim.cmd([[
+    set encoding=utf-8
+]])
 opt.list = true
-opt.listchars:append({
-  eol="Ω",
-  tab="¬",
-  trail = "↤",
+opt.listchars = {
+  eol = "Ω",
+  tab = ">-",
+  trail = "~",
   extends = ">",
   precedes = "<",
- })
+}
 
 -- disable built-in plugins
 local disabled_built_ins = {
@@ -127,29 +128,26 @@ vim.filetype.add({
   --     foo = "fooscript",
   -- },
   pattern = {
-    ['.*git/config'] = 'gitconfig',
-    ['.*env.*'] = 'sh',
-    ['.qmd'] = 'quarto',
-  }
+    [".*git/config"] = "gitconfig",
+    [".*env.*"] = "sh",
+    [".qmd"] = "quarto",
+  },
 })
 
 -- Nice looking file diff
-opt.fillchars = 'diff:/'
+opt.fillchars = "diff:/"
 
 -------------- MINE
 -- General settings for Neovim
 opt.autochdir = true
 
-
 -- folds
-opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldlevel = 99
-
 
 opt.updatetime = 250
 
 -- wo: window-scoped otion
 -- signcolumn: add the sign column on the left of the page
-vim.wo.signcolumn = 'yes'
-
+vim.wo.signcolumn = "yes"

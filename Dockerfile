@@ -12,6 +12,7 @@ RUN apk add \
     ripgrep \
     npm \
     neovim \
+    neovim-doc \
     ripgrep \
     stylua \
     tar \
@@ -29,4 +30,4 @@ RUN cd /root/.config/nvim
 # Install Lazy plugins
 RUN nvim --headless -V +qall
 
-CMD nvim
+CMD tail -f /dev/null

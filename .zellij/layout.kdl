@@ -1,7 +1,7 @@
 layout {
 
-  default_tab_template {
-       // the default zellij tab-bar and status bar plugins
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar"
         }
@@ -11,25 +11,26 @@ layout {
         }
     }
 
-  tab name="Main" {
-      pane split_direction="vertical" {
-          pane size="60%" {
-              name "Dev"
-              command "dvim"
-              focus true
+    tab name="Main" {
+        pane split_direction="vertical" {
+            pane size="60%" {
+                name "Dev"
+                command "dvim"
+                args "--tag" "main"
+                focus true
+                }
+            pane split_direction="horizontal" size="40%"{
+                pane size="80%" {
+                    name "term"
+                    }
+                pane size="20%" {
+                    name "neodev"
+                    command "just"
+                    args "attach"
+                    start_suspended true
+                    }
             }
-          pane split_direction="horizontal" size="40%"{
-              pane size="80%" {
-                  name "term"
-                }
-              pane size="20%" {
-                  name "neodev"
-                  command "just"
-                  args "attach"
-                  start_suspended true
-                }
-          }
-      }
-  }
+        }
+    }
 }
 

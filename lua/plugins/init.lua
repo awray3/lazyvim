@@ -9,6 +9,15 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
+    {
+        'rcarriga/nvim-notify',
+        config = function ()
+            require("notify").setup({
+                background_colour="#000000"
+            })
+        end
+    },
+ 
   -- colors
   {
     "neanias/everforest-nvim",
@@ -166,7 +175,7 @@ return {
   { import = "lazyvim.plugins.extras.ui.mini-starter" },
 
   -- add jsonls and schemastore ans setup treesitter for json, json5 and jsonc
-  { import = "lazyvim.plugins.extras.lang.json" },
+  -- { import = "lazyvim.plugins.extras.lang.json" },
 
   -- add any tools you want to have installed below
   {

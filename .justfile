@@ -1,5 +1,6 @@
+# docker build --build-arg N_CORES=8 --tag neovim:dev .
 build:
-	docker build --build-arg N_CORES=8 --tag neovim:dev .
+    docker build --tag neovim:dev .
 
 stop:
   docker rm --force neodev
@@ -7,12 +8,15 @@ stop:
 launch: stop build
     docker run -d \
         --name neodev \
-        -v `pwd`:/edit \
+        -v {{invocation_directory()}}:/edit \
         -w /edit \
         neovim:dev
 
 attach: launch
   docker exec -it neodev bash
+
+nvim: launch
+    docker exec -it neodev nvim
 
 update: launch
   docker exec -it neodev nvim -c ":Lazy update"
@@ -24,3 +28,4 @@ l: launch
 a: attach
 u: update
 h: health
+n: nvim
